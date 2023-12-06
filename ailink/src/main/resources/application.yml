@@ -1,0 +1,24 @@
+spring:
+  main:
+    allow-circular-references: true  #允许循环引用
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///ailink
+    username: root
+    password: root
+  redis:
+    cache-name: quanredis
+  cache:
+    type: redis
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 200MB
+mybatis:
+  mapper-locations: classpath:mapper/**.xml
+logging:
+  level:
+    com.quan.ailink: debug
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true

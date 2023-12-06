@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.quan.ailink.mapper.PostProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.quan.ailink.entity.PostProject" >
+    <id column="ppid" property="ppid" jdbcType="BIGINT" />
+    <result column="pid" property="pid" jdbcType="BIGINT" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="pass" property="pass" jdbcType="TINYINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ppid, pid, reason, path, pass, uid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.quan.ailink.entity.PostProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_project
+    where ppid = #{ppid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from post_project
+    where ppid = #{ppid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.quan.ailink.entity.PostProjectExample" >
+    delete from post_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.quan.ailink.entity.PostProject" >
+    insert into post_project (ppid, pid, reason, 
+      path, pass, uid)
+    values (#{ppid,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT}, #{reason,jdbcType=VARCHAR}, 
+      #{path,jdbcType=VARCHAR}, #{pass,jdbcType=TINYINT}, #{uid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.quan.ailink.entity.PostProject" >
+    insert into post_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ppid != null" >
+        ppid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="pass != null" >
+        pass,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ppid != null" >
+        #{ppid,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="pass != null" >
+        #{pass,jdbcType=TINYINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.quan.ailink.entity.PostProjectExample" resultType="java.lang.Integer" >
+    select count(*) from post_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_project
+    <set >
+      <if test="record.ppid != null" >
+        ppid = #{record.ppid,jdbcType=BIGINT},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=BIGINT},
+      </if>
+      <if test="record.reason != null" >
+        reason = #{record.reason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.path != null" >
+        path = #{record.path,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pass != null" >
+        pass = #{record.pass,jdbcType=TINYINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_project
+    set ppid = #{record.ppid,jdbcType=BIGINT},
+      pid = #{record.pid,jdbcType=BIGINT},
+      reason = #{record.reason,jdbcType=VARCHAR},
+      path = #{record.path,jdbcType=VARCHAR},
+      pass = #{record.pass,jdbcType=TINYINT},
+      uid = #{record.uid,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quan.ailink.entity.PostProject" >
+    update post_project
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="pass != null" >
+        pass = #{pass,jdbcType=TINYINT},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ppid = #{ppid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.quan.ailink.entity.PostProject" >
+    update post_project
+    set pid = #{pid,jdbcType=BIGINT},
+      reason = #{reason,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      pass = #{pass,jdbcType=TINYINT},
+      uid = #{uid,jdbcType=BIGINT}
+    where ppid = #{ppid,jdbcType=BIGINT}
+  </update>
+</mapper>

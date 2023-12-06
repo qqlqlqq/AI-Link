@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <classPathEntry location="E:\maven\repository\mysql\mysql-connector-java\8.0.26" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接地址账户密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ailink"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 生成Model类存放的位置 -->
+        <javaModelGenerator targetPackage="com.quan.ailink.entity" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件存放的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 生成Dao类存放的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.quan.ailink.mapper" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 生成对应表名及类名 -->
+<!--        <table tableName="attachment" domainObjectName="Attachment" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="department" domainObjectName="Department" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="department_user" domainObjectName="DepartmentUser" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="groups" domainObjectName="Groups" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="notice" domainObjectName="Notice" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="notice_user" domainObjectName="NoticeUser" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="office" domainObjectName="Office" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="office_user" domainObjectName="OfficeUser" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="permission" domainObjectName="Permission" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="post_project" domainObjectName="PostProject" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="progress" domainObjectName="Progress" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="project" domainObjectName="Project" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="role" domainObjectName="Role" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+<!--        <table tableName="role_permission" domainObjectName="RolePermission" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />-->
+        <table tableName="user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
+
+    </context>
+</generatorConfiguration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
